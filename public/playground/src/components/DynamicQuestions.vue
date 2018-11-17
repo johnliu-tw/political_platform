@@ -20,11 +20,11 @@
               </div>
               <div class="dialog dialog-opponent text-right" v-if="showSlot === 2">
                 <p class="dialog-text text-left">{{questions[slot_index].o_comment}}</p>
-                <img src="../../public/character2.png" alt="character2">
+                <img :src="require('../assets/character2.png')" alt="character2">
               </div>
               <div class="dialog dialog-user">
                 <p class="dialog-text">{{questions[slot_index].m_comment}}</p>
-                <img src="../../public/character1.png" alt="character1">
+                <img :src="require('../assets/character1.png')" alt="character1">
               </div>
             </div>
             <div class="options col-12">

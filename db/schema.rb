@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181112113058) do
+ActiveRecord::Schema.define(version: 20181116162028) do
 
   create_table "hashtags", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -66,6 +66,19 @@ ActiveRecord::Schema.define(version: 20181112113058) do
     t.integer "option_d_key"
   end
 
+  create_table "results", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "affairs"
+    t.integer "transportation"
+    t.integer "economic"
+    t.integer "education"
+    t.integer "teen"
+    t.integer "citizen"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,6 +97,7 @@ ActiveRecord::Schema.define(version: 20181112113058) do
     t.string "name"
     t.string "facebook"
     t.string "remote_avatar_url"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

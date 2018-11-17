@@ -1,7 +1,7 @@
 <template>
   <div id="outcome" class="row">
     <div class="intro-wrapper col-12" v-if="showIntro">
-      <div class="intro text-center justify-content-center align-items-center">
+      <div class="intro text-center">
         <div class="intro-text col-12">
           <p>2018年11月底</p>
           <p>某太平洋島國上</p>

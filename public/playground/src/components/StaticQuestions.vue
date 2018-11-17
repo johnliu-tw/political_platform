@@ -17,14 +17,14 @@
     <transition mode="out-in">
       <div class="question-wrapper col-12" v-if="showQuestion != null">
         <transition mode="out-in">
-          <div class="question row justifyÍ-content-between align-items-center" 
+          <div class="question row justifyÍ-content-center align-items-between" 
             :class="`question-${question_index+1}`" 
             :key="question_index" 
             v-for="(question, question_index) in questions"
             v-if="showQuestion===(question_index+1)">
             <div class="title col-12">{{question_index+1}}. {{question.title}}</div>
             <div class="middle col-12 text-center">
-              <img :src="require(`../../public/${question.img}`)" alt="image">
+              <img :src="require(`../assets/${question.img}`)" alt="image">
               <div class="progress-line-pc">
                 <div class="step-pc" :class="{'showed': showQuestion >= step}" :key="step" v-for="step in 6">{{step}}</div>
               </div>
@@ -262,6 +262,7 @@ export default {
   }
   .middle {
     position: relative;
+    height: 300px;
   }
   .progress-line-mobile {
     display: none;
