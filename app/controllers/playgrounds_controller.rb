@@ -2,15 +2,34 @@ class PlaygroundsController < ApplicationController
 
 
     def index
-
+        # if current_user == nil 
+        #     redirect_to "/users/auth/facebook"
+        #     return
+        # end
         @user = User.new()
+        @user.name = "劉義維"
+        @user.remote_avatar_url = "https://scontent.ftpe8-4.fna.fbcdn.net/v/t1.0-9/37671776_2078680108811872_5005884623729721344_n.jpg?_nc_cat=110&_nc_ht=scontent.ftpe8-4.fna&oh=04cf8e9f54091b66608b07773ba85ad5&oe=5C7DBF34"
+        # @share_url = 'http://www.taiwanbunbun.com/result/' + current_user.try(:uid)
+
         render :template => "politicians/playground"
     end
 
     def upload
         @user = User.first
-        u = @user.update(user_params)
-        render :template => "politicians/playground"
+        u = @user.update(params[:image])
+
+        if u
+            render json: "oK"
+        else
+            render json: "No ok"
+        end
+    end
+
+    def result
+
+        @user_image_url = User.find_by(uid: params[:uid]).image.url       
+        
+        render :template => "politicians/result"
     end
 
     def get_second_step_questions
@@ -53,6 +72,7 @@ class PlaygroundsController < ApplicationController
 
         result = Result.new(name: current_user.try(:name), 
                     email: current_user.try(:email),   
+                    u_id: current_user.try(:uid),
                     affairs: type_ids.count(0),
                     transportation: type_ids.count(1),
                     economic: type_ids.count(2),
